@@ -1,13 +1,19 @@
 #!/usr/bin/env python3
 
 import operator
+import logging
+import math
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.DEBUG)
 
 operators = {
     '+': operator.add,
     '-': operator.sub,
     '/': operator.truediv,
     '*': operator.mul,
-    '^': operator.pow
+    '^': operator.pow,
+    '!': math.factorial
 }
 
 def calculate(arg):
@@ -18,14 +24,18 @@ def calculate(arg):
             stack.append(value)
         except ValueError:
             function = operators[token]
-            arg2 = stack.pop()
-            arg1 = stack.pop()
             try: 
+                arg2 = stack.pop()
+                arg1 = stack.pop()
                 result = function(arg1, arg2)
+                stack.append(result)
+            except IndexError:
+                result = function(arg2)
                 stack.append(result)
             except ZeroDivisionError:
                 print('Divide by zero error.')
                 raise TypeError
+            logger.debug(stack)
         print(stack)
     if len(stack) != 1:
         raise TypeError
