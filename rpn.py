@@ -5,6 +5,9 @@ import operator
 operators = {
     '+': operator.add,
     '-': operator.sub,
+    '/': operator.truediv,
+    '*': operator.mul,
+    '^': operator.pow
 }
 
 def calculate(arg):
@@ -17,8 +20,12 @@ def calculate(arg):
             function = operators[token]
             arg2 = stack.pop()
             arg1 = stack.pop()
-            result = function(arg1, arg2)
-            stack.append(result)
+            try: 
+                result = function(arg1, arg2)
+                stack.append(result)
+            except ZeroDivisionError:
+                print('Divide by zero error.')
+                raise TypeError
         print(stack)
     if len(stack) != 1:
         raise TypeError
