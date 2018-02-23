@@ -12,6 +12,7 @@ def calculate(arg):
             result = arg1 + arg2
             stack.append(result)
         print(stack)
+    return stack.pop()
 def main():
     while True:
         print(calculate(input('rpn calc> ')))
