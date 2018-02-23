@@ -26,3 +26,6 @@ class TestBasics(unittest.TestCase):
 	def test_div_by_0(self):
 		with self.assertRaises(TypeError):
 			result = rpn.calculate('4 0 /')
+	def test_factorial(self):
+		result = rpn.calculate('4 !')
+		self.assertEqual(24, result)
