@@ -29,3 +29,6 @@ class TestBasics(unittest.TestCase):
 	def test_int_division(self):
 		result = rpn.calculate('13 3 .')
 		self.assertEqual(4, result)
+	def test_exponent(self):
+		result = rpn.calculalte('3 2 ^')
+		self.assertEqual(9, result)
