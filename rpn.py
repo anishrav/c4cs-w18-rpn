@@ -10,9 +10,10 @@ logger.setLevel(logging.DEBUG)
 operators = {
     '+': operator.add,
     '-': operator.sub,
-    '/': operator.truediv,
+    '.': operator.floordiv,
     '*': operator.mul,
-    '!': math.factorial
+    '!': math.factorial,
+    '/': operator.truediv
 }
 
 def calculate(arg):
