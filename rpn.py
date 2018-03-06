@@ -13,7 +13,8 @@ operators = {
     '.': operator.floordiv,
     '*': operator.mul,
     '!': math.factorial,
-    '/': operator.truediv
+    '/': operator.truediv,
+    '^': operator.pow
 }
 
 def calculate(arg):
