@@ -20,12 +20,12 @@ class TestBasics(unittest.TestCase):
 	def test_divide(self):
 		result = rpn.calculate('12 3 /')
 		self.assertEqual(4, result)
-	def test_exponent(self):
-		result = rpn.calculate('4 2 ^')
-		self.assertEqual(16, result)
 	def test_div_by_0(self):
 		with self.assertRaises(TypeError):
 			result = rpn.calculate('4 0 /')
 	def test_factorial(self):
 		result = rpn.calculate('4 !')
 		self.assertEqual(24, result)
+	def test_int_division(self):
+		result = rpn.calculate('13 3 .')
+		self.assertEqual(4, result)
